@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Food Ordering Website</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      width: 350px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    input[type="submit"] {
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    input[type="submit"]:focus {
+      outline: none;
+    }
+
+    .input-container {
+      margin-bottom: 20px;
+    }
+
+    .input-container:last-child {
+      margin-bottom: 0;
+    }
+
+    .input-container input {
+      border: 1px solid #ced4da;
+    }
+
+    .input-container input:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+    .logo {
+      margin-bottom: 30px;
+    }
+
+    .logo img {
+      width: 100px;
+      height: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="logo">
+      <img src="https://tse1.mm.bing.net/th?id=OIP.ZRB8nfYxIqe_AXkygaFEJQAAAA&pid=Api&P=0&h=180" alt="Logo">
+    </div>
+    <h2>Login to Food Ordering Website</h2>
+    <form id="login">
+      <div class="input-container">
+        <input type="text" name="email" placeholder="email" required>
+      </div>
+      <div class="input-container">
+        <input type="password" name="password" placeholder="Password" required>
+      </div>
+      <button style="width: 100%; background-color: #0056b3; padding: 10px; border-radius: 13px;">login</button>
+    </form>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const registrationForm = document.getElementById('login');
+
+      registrationForm.addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Get form data
+        const formData = new FormData(registrationForm);
+        const userData = {
+
+          email: formData.get('email'),
+          password: formData.get('password'),
+
+        };
+
+        // Send data to the backend
+        fetch('http://localhost:5000/api/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(userData)
+        })
+          .then(response => {
+            if (response.ok) {
+              return response.json();
+            }
+            throw new Error('Network response was not ok.');
+          })
+          .then(user => {
+            console.log(user);
+            let userJSON = JSON.stringify(user.user);
+            localStorage.setItem('user', userJSON);
+            window.location.href = "index.html"; // Handle success response from the backend
+          })
+          .catch(error => {
+            console.error('Error:', error); 
+            alert("something went wrong check the username and password")// Handle errors
+          });
+      });
+    });
+  </script>
+</body>
+
+</html>

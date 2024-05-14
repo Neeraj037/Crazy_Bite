@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+        }
+        .cart-item img {
+            width: 100px;
+            height: 100px;
+            border-radius: 8px;
+            margin-right: 20px;
+        }
+        .cart-item-details {
+            flex: 1;
+        }
+        .cart-item-details h3 {
+            margin: 0;
+            color: #333;
+        }
+        .cart-item-details p {
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+        .buttons button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .buttons button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Shopping Cart</h1>
+        <div id="cartItems">
+            <!-- Cart items will be displayed here dynamically -->
+        </div>
+        <div class="buttons">
+            <button id="buyNowBtn">Buy Now</button>
+            <button id="removeAllBtn">Remove All</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get cart items from local storage
+            var cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Display cart items
+            var cartItemsContainer = document.getElementById('cartItems');
+            cartItems.forEach(function(item, index) {
+                var cartItemDiv = document.createElement('div');
+                cartItemDiv.classList.add('cart-item');
+                cartItemDiv.innerHTML = `
+                    <img src="food${index + 1}.jpg" alt="Food ${index + 1}">
+                    <div class="cart-item-details">
+                        <h3>${item.name}</h3>
+                        <p>Price: ${item.price}</p>
+                        <p>Rating: ${item.rating}</p>
+                    </div>
+                    <div class="buttons">
+                        <button class="remove-from-cart" data-index="${index}">Remove</button>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(cartItemDiv);
+            });
+
+            // Add event listener for Buy Now button
+            document.getElementById('buyNowBtn').addEventListener('click', function() {
+                // Perform buy now action, e.g., redirect to checkout page
+                alert('Redirecting to checkout page...');
+            });
+
+            // Add event listener for Remove All button
+            document.getElementById('removeAllBtn').addEventListener('click', function() {
+                // Remove all items from cart and update local storage
+                localStorage.removeItem('cart');
+                // Clear cart items from the page
+                cartItemsContainer.innerHTML = '<p>No items in the cart</p>';
+            });
+
+            // Add event listener for Remove button on each cart item
+            var removeButtons = document.querySelectorAll('.remove-from-cart');
+            removeButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    // Get the index of the item to be removed
+                    var indexToRemove = parseInt(this.getAttribute('data-index'));
+                    // Remove the item from the cartItems array
+                    cartItems.splice(indexToRemove, 1);
+                    // Update local storage with the modified cartItems array
+                    localStorage.setItem('cart', JSON.stringify(cartItems));
+                    // Remove the cart item from the page
+                    this.parentElement.parentElement.parentElement.remove();
+                });
+            });
+        });
+    </script>
+</body>
+</html>

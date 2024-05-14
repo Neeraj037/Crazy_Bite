@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .profile-info {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .profile-info p {
+            margin: 10px 0;
+            color: #555;
+        }
+        .profile-info label {
+            font-weight: bold;
+            color: #666;
+            margin-right: 5px;
+        }
+        .profile-info span {
+            color: #007bff;
+        }
+        .logo {
+    
+      text-align: center;
+    }
+
+    .logo img {
+      width: 100px;
+      height: auto;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="https://tse1.mm.bing.net/th?id=OIP.ZRB8nfYxIqe_AXkygaFEJQAAAA&pid=Api&P=0&h=180" alt="Logo">
+          </div>
+        <h1>User Profile</h1>
+        <div class="profile-info">
+            <p>
+                <label>Name: </label>
+                <span id="userName"></span>
+            </p>
+            <p>
+                <label>Email: </label>
+                <span id="userEmail"></span>
+            </p>
+            <p>
+                <label>Phone: </label>
+                <span id="userPhone"></span>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Retrieve user information from local storage
+        var user = JSON.parse(localStorage.getItem('user'));
+
+        // Display user information on the profile page
+        if (user) {
+            document.getElementById('userName').textContent = user.name || 'N/A';
+            document.getElementById('userEmail').textContent = user.email || 'N/A';
+            document.getElementById('userPhone').textContent = user.phone || 'N/A';
+        }
+    </script>
+</body>
+</html>
+
