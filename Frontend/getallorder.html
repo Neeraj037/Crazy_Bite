@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Orders</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        .order {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .order p {
+            margin: 5px 0;
+        }
+
+        .order img {
+            width: 100px;
+            border-radius: 5px;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>All Orders</h2>
+        <div id="orders"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Fetch all orders for a specific user
+            fetchOrders();
+        });
+
+        async function fetchOrders() {
+            try {
+                // Replace 'userId' with the actual user ID
+                const userId = 'userId';
+
+                // Fetch orders from the backend API
+                const response = await fetch(`/api/orders/${userId}`);
+                const data = await response.json();
+
+                if (data.success) {
+                    displayOrders(data.orders);
+                } else {
+                    console.error('Failed to fetch orders:', data.message);
+                }
+            } catch (error) {
+                console.error('Error fetching orders:', error);
+            }
+        }
+
+        function displayOrders(orders) {
+            const ordersContainer = document.getElementById('orders');
+
+            orders.forEach(order => {
+                const orderDiv = document.createElement('div');
+                orderDiv.classList.add('order');
+
+                orderDiv.innerHTML = `
+                    <img src="${order.product.image}" alt="${order.product.name}">
+                    <div>
+                        <p><strong>Product:</strong> ${order.product.name}</p>
+                        <p><strong>Price:</strong> $${order.product.price}</p>
+                        <p><strong>Address:</strong> ${order.address}</p>
+                        <p><strong>Phone Number:</strong> ${order.phoneNumber}</p>
+                        <p><strong>Pin Code:</strong> ${order.pinCode}</p>
+                    </div>
+                `;
+
+                ordersContainer.appendChild(orderDiv);
+            });
+        }
+    </script>
+</body>
+</html>

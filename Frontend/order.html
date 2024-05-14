@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group input[type="text"],
+        .input-group input[type="number"] {
+            padding: 10px;
+            width: calc(100% - 20px);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .input-group input[type="button"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .input-group input[type="button"]:hover {
+            background-color: #0056b3;
+        }
+
+        #productDetails {
+            display: flex;
+            align-items: center;
+        }
+
+        #productDetails img {
+            width: 100px;
+            margin-right: 20px;
+        }
+
+        #totalAmount {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Enter Your Address</h2>
+        <div class="input-group">
+            <input type="text" id="addressInput" placeholder="Address">
+            <input type="text" id="phoneInput" placeholder="Phone Number">
+            <input type="text" id="pincodeInput" placeholder="Pin Code">
+           
+        </div>
+
+        <h2>Selected Product</h2>
+        <div id="productDetails">
+            
+        </div>
+
+        <h2>Enter Quantity</h2>
+        <div class="input-group">
+            <input type="number" id="quantityInput" placeholder="Quantity" onchange="calculateTotal()" value="1">
+        </div>
+
+        <div id="totalAmount" style="text-align: end;"></div>
+
+        <button onclick="placeOrder()">Place Order</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Retrieve selected product from local storage
+            var selectedProduct = JSON.parse(localStorage.getItem('Product'));
+            displayProductDetails(selectedProduct);
+        });
+        const selectedProduct = JSON.parse(localStorage.getItem('Product'));
+        function displayProductDetails(product) {
+            var productDetailsDiv = document.getElementById('productDetails');
+            productDetailsDiv.innerHTML = `
+                <img src="${product.image}" alt="${product.name}">
+                <div>
+                    <h3>${product.name}</h3>
+                    <p>Price: ${product.price}</p>
+                </div>
+            `;
+            var quantityInput = document.getElementById('quantityInput').value;
+        
+            var totalPrice = parseFloat(selectedProduct.price) * parseInt(quantityInput);
+            console.log(totalPrice);
+            document.getElementById('totalAmount').textContent = "Total Amount: " + totalPrice.toFixed(2);
+        }
+
+        // function submitAddress() {
+        //     var addressInput = document.getElementById('addressInput').value;
+        //     var phoneInput = document.getElementById('phoneInput').value;
+        //     var pincodeInput = document.getElementById('pincodeInput').value;
+        //     // You can perform further actions with the address, such as validation, sending to the backend, etc.
+        //     console.log("Address submitted:", addressInput);
+        //     console.log("Phone Number:", phoneInput);
+        //     console.log("Pin Code:", pincodeInput);
+        // }
+
+        function calculateTotal() {
+            var quantityInput = document.getElementById('quantityInput').value;
+          
+            var totalPrice = parseFloat(selectedProduct.price) * parseInt(quantityInput);
+            console.log(totalPrice);
+            document.getElementById('totalAmount').textContent = "Total Amount: " + totalPrice.toFixed(2);
+        }
+
+        function placeOrder() {
+            // Here you can add the logic to send the order details to the backend
+            var addressInput = document.getElementById('addressInput').value;
+            var phoneInput = document.getElementById('phoneInput').value;
+            var pincodeInput = document.getElementById('pincodeInput').value;
+            // You can perform further actions with the address, such as validation, sending to the backend, etc.
+            console.log("Address submitted:", addressInput);
+            console.log("Phone Number:", phoneInput);
+            console.log("Pin Code:", pincodeInput);
+            console.log(document.getElementById('totalAmount').textContent.slice(14,18));
+        }
+    </script>
+</body>
+</html>
+
