@@ -73,18 +73,23 @@
 </head>
 
 <body>
+    <button style="position: absolute;
+    right: 8%;
+    top: 10%;
+    padding: 10px 50px;
+    border-radius: 10px;
+    font-size: 20px; " ><a href="item.html" style="text-decoration: none;">Cart</a></button>
     <div class="container">
-
         <div class="food-item">
             <img src="https://tse3.mm.bing.net/th?id=OIP.mrliajAcK_FESJOmmhv6xwHaEo&pid=Api&P=0&h=180" alt="Food 1">
             <div class="food-info">
                 <h2>Pizza</h2>
                 <p>Description: This is corn chesse pizza.</p>
-                <p>Price: 100</p>
-                <p>Rating: 4.5</p>
+                <p>Price:<span>120</span></p>
+                <p>Rating:<span>4.6</span></p>
                 <div class="buttons">
                     <button class="add-to-cart">Add to Cart</button>
-                    <button>Buy Now</button>
+                    <button class="buy-now">Buy Now</button>
                 </div>
             </div>
         </div>
@@ -93,153 +98,105 @@
             <div class="food-info">
                 <h2>Burger</h2>
                 <p>Description: This is chicken burger</p>
-                <p>120</p>
-                <p>4.8</p>
+                <p>Price:<span>100</span></p>
+                <p>Rating:<span>4.6</span></p>
                 <div class="buttons">
                     <button class="add-to-cart">Add to Cart</button>
-                    <button>Buy Now</button>
+                    <button class="buy-now">Buy Now</button>
                 </div>
             </div>
         </div>
-        <div class="food-item">
-            <img src="food1.jpg" alt="Food 1">
-            <div class="food-info">
-                <h2>Food Item 1</h2>
-                <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <p>Price: 10</p>
-                <p>Rating: 4.5</p>
-                <div class="buttons">
-                    <button class="add-to-cart">Add to Cart</button>
-                    <button>Buy Now</button>
-                </div>
-            </div>
-        </div>
-        <div class="food-item">
-            <img src="food2.jpg" alt="Food 2">
-            <div class="food-info">
-                <h2>Food Item 2</h2>
-                <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <p>Price: 12</p>
-                <p>Rating: 4.2</p>
-                <div class="buttons">
-                    <button class="add-to-cart">Add to Cart</button>
-                    <button>Buy Now</button>
-                </div>
-            </div>
-        </div>
-        <div class="food-item">
-            <img src="food1.jpg" alt="Food 1">
-            <div class="food-info">
-                <h2>Food Item 1</h2>
-                <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <p>Price: 10</p>
-                <p>Rating: 4.5</p>
-                <div class="buttons">
-                    <button class="add-to-cart">Add to Cart</button>
-                    <button>Buy Now</button>
-                </div>
-            </div>
-        </div>
-        <div class="food-item">
-            <img src="food2.jpg" alt="Food 2">
-            <div class="food-info">
-                <h2>Food Item 2</h2>
-                <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <p>Price: 12</p>
-                <p>Rating: 4.2</p>
-                <div class="buttons">
-                    <button class="add-to-cart">Add to Cart</button>
-                    <button>Buy Now</button>
-                </div>
-            </div>
-        </div>
-        <div class="food-item">
-            <img src="food1.jpg" alt="Food 1">
-            <div class="food-info">
-                <h2>Food Item 1</h2>
-                <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <p>Price: 10</p>
-                <p>Rating: 4.5</p>
-                <div class="buttons">
-                    <button class="add-to-cart">Add to Cart</button>
-                    <button>Buy Now</button>
-                </div>
-            </div>
-        </div>
-        <div class="food-item">
-            <img src="food2.jpg" alt="Food 2">
-            <div class="food-info">
-                <h2>Food Item 2</h2>
-                <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <p>Price: 12</p>
-                <p>Rating: 4.2</p>
-                <div class="buttons">
-                    <button class="add-to-cart">Add to Cart</button>
-                    <button>Buy Now</button>
-                </div>
-            </div>
-        </div>
-        <div class="food-item">
-            <img src="food1.jpg" alt="Food 1">
-            <div class="food-info">
-                <h2>Food Item 1</h2>
-                <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <p>Price: 10</p>
-                <p>Rating: 4.5</p>
-                <div class="buttons">
-                    <button class="add-to-cart">Add to Cart</button>
-                    <button>Buy Now</button>
-                </div>
-            </div>
-        </div>
-        <div class="food-item">
-            <img src="food2.jpg" alt="Food 2">
-            <div class="food-info">
-                <h2>Food Item 2</h2>
-                <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <div class="">Price
-                    <p>12</p>
-                </div>
-                <div class="">Rating
-                    <p>4.8</p>
-                </div>
-                <div class="buttons">
-                    <button class="add-to-cart">Add to Cart</button>
-                    <button>Buy Now</button>
-                </div>
-            </div>
-        </div>
+       
+        
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Get all "Add to Cart" buttons
-            var addToCartButtons = document.querySelectorAll('.add-to-cart');
+    document.addEventListener('DOMContentLoaded', function () {
+    // Get all "Add to Cart" buttons
+    var buyNowButtons = document.querySelectorAll('.buy-now');
 
+// Loop through each button and attach event listener
+buyNowButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+        // Get product details
+        console.log(this.parentElement.parentElement.parentElement.querySelector('img'));
+        var productName = this.parentElement.parentElement.querySelector('h2').textContent;
+        var productImage = this.parentElement.parentElement.parentElement.querySelector('img').src;
+        var productPrice = this.parentElement.parentElement.querySelector('p span').textContent;
+
+        // Store product details in local storage
+        var productDetails = {
+            name: productName,
+            image: productImage,
+            price: productPrice
+        };
+        console.log(productDetails);
+        localStorage.setItem('Product', JSON.stringify(productDetails));
+
+        // Redirect to a specific page (checkout page)
+        window.location.href = 'order.html';
+    });
+});
+
+
+
+
+
+
+
+
+
+
+    let addToCartButtons = document.querySelectorAll('.add-to-cart');
+    addToCartButtons.forEach(function (button) {
+        button.addEventListener('click', function () {
+            // Step 1: Get the parent of the button
+            let parentDiv = this.parentElement.parentElement;
+            console.log("Parent div:", parentDiv);
+
+            // Step 2: Query for the elements within the parent
+            let foodName = parentDiv.querySelector('h2');
+            let foodPrice = parentDiv.querySelector('div:nth-child(2) p span');
+            // let foodRating = parentDiv.querySelector('div:nth-child(3) p span').textContent;
+            console.log("Food Name:", foodName);
+            console.log("Food Price:", foodPrice);
+            // console.log("Food Rating:", foodRating);
+
+            // Check if any of the elements are null
+            if (!foodName || !foodPrice ) {
+                console.error("One or more elements not found!");
+                return;
+            }
+
+            // Now proceed with the rest of your code
+            let name = foodName.textContent;
+            let price = foodPrice.textContent;
+          
+
+            let foodItem = {
+                name: name,
+                price: price,
             
-            addToCartButtons.forEach(function (button) {
-                button.addEventListener('click', function () {
-                    
-console.log(this.parentElement.parentElement.querySelector('div:nth-child(3) p')).textContent;
-                    var foodItem = {
-                        name: this.parentElement.parentElement.querySelector('h2').textContent,
-                        price: this.parentElement.parentElement.querySelector('div:nth-child(3) p').textContent,
-                        rating: this.parentElement.parentElement.querySelector('div:nth-child(4) p').textContent
-                    };
+            };
 
-                    // Get the current cart items from local storage
-                    var cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            // Get the current cart items from local storage
+            let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
 
-                    // Add the food item to cart
-                    cartItems.push(foodItem);
+            // Add the food item to cart
+            cartItems.push(foodItem);
 
-                    // Store the updated cart items in local storage
-                    localStorage.setItem('cart', JSON.stringify(cartItems));
+            // Store the updated cart items in local storage
+            localStorage.setItem('cart', JSON.stringify(cartItems));
 
-                    // Optionally, you can provide feedback to the user that the item was added to cart
-                    alert('Item added to cart!');
-                });
-            });
+            // Optionally, you can provide feedback to the user that the item was added to cart
+            alert('Item added to cart!');
         });
+        
+    });
+});
+
+
+
+
     </script>
 </body>
 

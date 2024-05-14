@@ -65,7 +65,7 @@
     <div class="container">
         <h1>Shopping Cart</h1>
         <div id="cartItems">
-            <!-- Cart items will be displayed here dynamically -->
+          
         </div>
         <div class="buttons">
             <button id="buyNowBtn">Buy Now</button>
@@ -88,7 +88,7 @@
                     <div class="cart-item-details">
                         <h3>${item.name}</h3>
                         <p>Price: ${item.price}</p>
-                        <p>Rating: ${item.rating}</p>
+                      
                     </div>
                     <div class="buttons">
                         <button class="remove-from-cart" data-index="${index}">Remove</button>
@@ -110,11 +110,10 @@
                 // Clear cart items from the page
                 cartItemsContainer.innerHTML = '<p>No items in the cart</p>';
             });
-
-            // Add event listener for Remove button on each cart item
             var removeButtons = document.querySelectorAll('.remove-from-cart');
             removeButtons.forEach(function(button) {
-                button.addEventListener('click', function() {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault()
                     // Get the index of the item to be removed
                     var indexToRemove = parseInt(this.getAttribute('data-index'));
                     // Remove the item from the cartItems array
@@ -123,6 +122,7 @@
                     localStorage.setItem('cart', JSON.stringify(cartItems));
                     // Remove the cart item from the page
                     this.parentElement.parentElement.parentElement.remove();
+                    window.location.href="item.html"
                 });
             });
         });
