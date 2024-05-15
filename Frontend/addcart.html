@@ -87,7 +87,7 @@
                 <p>Description: This is corn chesse pizza.</p>
                 <p>Price:<span>120</span></p>
                 <p>Rating:<span>4.6</span></p>
-                <div class="buttons">
+                <div class="buttons" id="button">
                     <button class="add-to-cart">Add to Cart</button>
                     <button class="buy-now">Buy Now</button>
                 </div>
@@ -100,21 +100,106 @@
                 <p>Description: This is chicken burger</p>
                 <p>Price:<span>100</span></p>
                 <p>Rating:<span>4.6</span></p>
-                <div class="buttons">
+                <div class="buttons" id="button">
                     <button class="add-to-cart">Add to Cart</button>
                     <button class="buy-now">Buy Now</button>
                 </div>
             </div>
         </div>
-       
+        <div class="food-item">
+            <img src="https://tse3.mm.bing.net/th?id=OIP.mrliajAcK_FESJOmmhv6xwHaEo&pid=Api&P=0&h=180" alt="Food 1">
+            <div class="food-info">
+                <h2>Pizza</h2>
+                <p>Description: This is corn chesse pizza.</p>
+                <p>Price:<span>120</span></p>
+                <p>Rating:<span>4.6</span></p>
+                <div class="buttons" id="button">
+                    <button class="add-to-cart">Add to Cart</button>
+                    <button class="buy-now">Buy Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="food-item">
+            <img src="https://tse4.mm.bing.net/th?id=OIP.kTvs-fiEdCw7rldk41rhKwHaEo&pid=Api&P=0&h=180" alt="Food 2">
+            <div class="food-info">
+                <h2>Burger</h2>
+                <p>Description: This is chicken burger</p>
+                <p>Price:<span>100</span></p>
+                <p>Rating:<span>4.6</span></p>
+                <div class="buttons" id="button">
+                    <button class="add-to-cart">Add to Cart</button>
+                    <button class="buy-now">Buy Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="food-item">
+            <img src="https://tse3.mm.bing.net/th?id=OIP.mrliajAcK_FESJOmmhv6xwHaEo&pid=Api&P=0&h=180" alt="Food 1">
+            <div class="food-info">
+                <h2>Pizza</h2>
+                <p>Description: This is corn chesse pizza.</p>
+                <p>Price:<span>120</span></p>
+                <p>Rating:<span>4.6</span></p>
+                <div class="buttons" id="button">
+                    <button class="add-to-cart">Add to Cart</button>
+                    <button class="buy-now">Buy Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="food-item">
+            <img src="https://tse4.mm.bing.net/th?id=OIP.kTvs-fiEdCw7rldk41rhKwHaEo&pid=Api&P=0&h=180" alt="Food 2">
+            <div class="food-info">
+                <h2>Burger</h2>
+                <p>Description: This is chicken burger</p>
+                <p>Price:<span>100</span></p>
+                <p>Rating:<span>4.6</span></p>
+                <div class="buttons" id="button">
+                    <button class="add-to-cart">Add to Cart</button>
+                    <button class="buy-now">Buy Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="food-item">
+            <img src="https://tse3.mm.bing.net/th?id=OIP.mrliajAcK_FESJOmmhv6xwHaEo&pid=Api&P=0&h=180" alt="Food 1">
+            <div class="food-info">
+                <h2>Pizza</h2>
+                <p>Description: This is corn chesse pizza.</p>
+                <p>Price:<span>120</span></p>
+                <p>Rating:<span>4.6</span></p>
+                <div class="buttons" id="button">
+                    <button class="add-to-cart">Add to Cart</button>
+                    <button class="buy-now">Buy Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="food-item">
+            <img src="https://tse4.mm.bing.net/th?id=OIP.kTvs-fiEdCw7rldk41rhKwHaEo&pid=Api&P=0&h=180" alt="Food 2">
+            <div class="food-info">
+                <h2>Burger</h2>
+                <p>Description: This is chicken burger</p>
+                <p>Price:<span>100</span></p>
+                <p>Rating:<span>4.6</span></p>
+                <div class="buttons" id="button">
+                    <button class="add-to-cart">Add to Cart</button>
+                    <button class="buy-now">Buy Now</button>
+                </div>
+            </div>
+        </div>
         
     </div>
     <script>
     document.addEventListener('DOMContentLoaded', function () {
-    // Get all "Add to Cart" buttons
-    var buyNowButtons = document.querySelectorAll('.buy-now');
 
-// Loop through each button and attach event listener
+    var buyNowButtons = document.querySelectorAll('.buy-now');
+     
+     let user =JSON.parse(localStorage.getItem('user'));;
+     if(!user)
+     {
+        const buttons = document.querySelectorAll('.buttons');
+            buttons.forEach(button => {
+                button.style.display ='none';
+            });
+     }
+
 buyNowButtons.forEach(function (button) {
     button.addEventListener('click', function () {
         // Get product details
@@ -136,15 +221,6 @@ buyNowButtons.forEach(function (button) {
         window.location.href = 'order.html';
     });
 });
-
-
-
-
-
-
-
-
-
 
     let addToCartButtons = document.querySelectorAll('.add-to-cart');
     addToCartButtons.forEach(function (button) {

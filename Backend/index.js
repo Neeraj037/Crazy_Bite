@@ -2,6 +2,7 @@ import express, { urlencoded } from 'express'
 import dotenv from 'dotenv'
 import connect from './config/Connect.js';
 import userrouter from './route/user.route.js'
+import orderroute from './route/order.router.js'
 import cors from 'cors'
 const app=express();
 dotenv.config({
@@ -17,6 +18,7 @@ app.get("/",(req,res)=>{
     res.send("i am here");
 })
 app.use("/api",userrouter)
+app.use("/api",orderroute)
 app.get("/user",(req,res)=>{
     res.json({data:"umesh is here"});
 })

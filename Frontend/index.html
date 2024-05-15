@@ -32,7 +32,9 @@
                 <a>                     
                 <button id="registerBtn" style="color: #5e58cf;"><a href="register.html">Register</a></button>
                 <button id="loginBtn" style="color: #5e58cf;"><a href="login.html">Login</a></button>
+                <button id="order" style="color: #5e58cf; display: none; cursor: pointer;"><a href="getallorder.html">Order</a></button>
                 <button id="logoutBtn" style="color: #5e58cf; display: none; cursor: pointer;">Logout</button>
+              
             </div>
         </div>
         
@@ -228,11 +230,11 @@
 
     </div>
     <script>
-        // Check if user exists in local storage
+        
         var user = localStorage.getItem('user');
         updateButtonsVisibility(user);
     
-        // Add event listener to logout button
+      
         document.getElementById('logoutBtn').addEventListener('click', function() {
             // Remove user from local storage
             localStorage.removeItem('user');
@@ -246,16 +248,18 @@
                 // User found, show logout button
                 document.getElementById('logoutBtn').style.display = 'block';
                 document.getElementById('profile').style.display = 'block';
-                // Hide register and login buttons
+                document.getElementById('order').style.display = 'block';
+               
                 document.getElementById('registerBtn').style.display = 'none';
                 document.getElementById('loginBtn').style.display ='none';
             } else {
-                // User not found, show register and login buttons
+              
                 document.getElementById('registerBtn').style.display = 'block';
                 document.getElementById('loginBtn').style.display = 'block';
-                // Hide logout button
+               
                 document.getElementById('profile').style.display = 'none';
                 document.getElementById('logoutBtn').style.display = 'none';
+                document.getElementById('order').style.display = 'none';
             }
         }
     </script>
