@@ -38,6 +38,6 @@ const orderSchema = new mongoose.Schema({
 });
 
 // Create a model from the schema
-const Order = mongoose.model('Order', orderSchema);
+export const Order = mongoose.model('Order', orderSchema);
 
-module.exports = Order;
+

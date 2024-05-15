@@ -58,10 +58,11 @@
         async function fetchOrders() {
             try {
                 // Replace 'userId' with the actual user ID
-                const userId = 'userId';
+                let user =JSON.parse(localStorage.getItem('user'));;
+                 const id=user._id;
 
                 // Fetch orders from the backend API
-                const response = await fetch(`/api/orders/${userId}`);
+                const response = await fetch(`http://localhost:3000/api/getorder/${user._id}`);
                 const data = await response.json();
 
                 if (data.success) {
@@ -85,7 +86,7 @@
                     <img src="${order.product.image}" alt="${order.product.name}">
                     <div>
                         <p><strong>Product:</strong> ${order.product.name}</p>
-                        <p><strong>Price:</strong> $${order.product.price}</p>
+                        <p><strong>Price:</strong> ${order.product.price}</p>
                         <p><strong>Address:</strong> ${order.address}</p>
                         <p><strong>Phone Number:</strong> ${order.phoneNumber}</p>
                         <p><strong>Pin Code:</strong> ${order.pinCode}</p>
